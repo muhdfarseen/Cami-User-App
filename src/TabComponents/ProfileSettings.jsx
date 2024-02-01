@@ -1,8 +1,8 @@
 import React from 'react'
 import { Divider, Image, Drawer, NavLink, rem, Badge, Center, Group, SegmentedControl, Card, Title, BackgroundImage, Alert, PinInput, NumberInput, Modal, Select, Flex, Mark, Grid, Text, TextInput, Button, PasswordInput, Box } from '@mantine/core';
 import { IconLogout2, IconUserEdit, IconLock, IconCreditCard, IconInfoCircle } from '@tabler/icons-react'
-import camicard from "../Assets/CamiCard.svg"
-import camicardlogo from "../Assets/CamiCardLogo.svg"
+import camicard from "/CamiCard.svg"
+import camicardlogo from "/CamiCardLogo.svg"
 import { useDisclosure } from '@mantine/hooks';
 import { useNavigate } from 'react-router-dom';
 

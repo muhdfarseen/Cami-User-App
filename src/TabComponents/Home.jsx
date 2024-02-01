@@ -1,7 +1,7 @@
 import React from 'react'
 import { Image, Center, BackgroundImage, Alert, PinInput, NumberInput, Modal, Group, Select, Flex, Mark, Grid, Title, Text, TextInput, Button, PasswordInput, Box } from '@mantine/core';
-import camicard from "../Assets/CamiCard.svg"
-import camicardlogo from "../Assets/CamiCardLogo.svg"
+import camicard from "/CamiCard.svg"
+import camicardlogo from "/CamiCardLogo.svg"
 
 function Home() {
   return (
