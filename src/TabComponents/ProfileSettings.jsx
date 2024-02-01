@@ -1,10 +1,14 @@
 import React from 'react'
-import { Divider, Image, NavLink, rem, Badge, Center, Group, SegmentedControl, Card, Title, BackgroundImage, Alert, PinInput, NumberInput, Modal, Select, Flex, Mark, Grid, Text, TextInput, Button, PasswordInput, Box } from '@mantine/core';
+import { Divider, Image, Drawer, NavLink, rem, Badge, Center, Group, SegmentedControl, Card, Title, BackgroundImage, Alert, PinInput, NumberInput, Modal, Select, Flex, Mark, Grid, Text, TextInput, Button, PasswordInput, Box } from '@mantine/core';
 import { IconLogout2, IconUserEdit, IconLock, IconCreditCard, IconInfoCircle } from '@tabler/icons-react'
 import camicard from "../assets/CamiCard.svg"
 import camicardlogo from "../assets/CamiCardLogo.svg"
+import { useDisclosure } from '@mantine/hooks';
 
 function ProfileSettings() {
+
+  const [opened, { open, close }] = useDisclosure(false);
+
   return (
     <div>
       <Box p={30}>
@@ -54,6 +58,7 @@ function ProfileSettings() {
           />
           <NavLink
             label="Payment Details"
+            onClick={open}
             leftSection={<IconCreditCard size="1rem" stroke={1.5} />}
           />
           <NavLink
@@ -68,6 +73,13 @@ function ProfileSettings() {
 
         </Flex>
       </Box>
+
+      <Modal size="20%" centered radius="md" opened={opened} onClose={close} withCloseButton={false} zIndex={20000}>
+        <Title order={3}>Paid ₹500</Title>
+        <Text fw={500} size="md" >on 17 jan 2024</Text>
+        <Text fw={400} size="sm" >Valid till 30 March 2025</Text>
+      </Modal>
+
     </div>
   )
 }

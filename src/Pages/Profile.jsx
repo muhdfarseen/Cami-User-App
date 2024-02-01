@@ -32,7 +32,7 @@ function Profile() {
 
   return (
     <div>
-      <Tabs defaultValue="home" inverted>
+      <Tabs defaultValue="busmap" inverted>
 
         <Tabs.Panel value="home"> <Home /> </Tabs.Panel>
         <Tabs.Panel value="busmap"> <Busmap /> </Tabs.Panel>
