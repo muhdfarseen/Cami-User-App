@@ -3,7 +3,7 @@ import { Image, Center, Group, SegmentedControl, Card, Title, BackgroundImage, A
 import L from 'leaflet';
 import { Icon } from 'leaflet';
 import 'leaflet/dist/leaflet.css';
-import customIconImage from '../assets/Bus.png';
+import customIconImage from '../Assets/Bus.png';
 
 function Busmap() {
 

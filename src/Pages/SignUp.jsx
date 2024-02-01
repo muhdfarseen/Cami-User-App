@@ -1,6 +1,6 @@
 import React from 'react'
 import { Image, NumberInput, Group, Select, Flex, Mark, Grid, Title, Text, TextInput, Button, PasswordInput, Box } from '@mantine/core';
-import logo from "../assets/favCami.svg"
+import logo from "../Assets/favCami.svg"
 import { useNavigate } from 'react-router-dom';
 
 function SignUp() {
