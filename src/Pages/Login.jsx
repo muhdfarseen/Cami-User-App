@@ -1,6 +1,5 @@
 import React from 'react'
 import { Image, Flex, Mark, Title, Text, TextInput, Button, PasswordInput, Box } from '@mantine/core';
-import Addresspana from "../Assets/Address-pana.svg"
 import logo from "../Assets/favCami.svg"
 import { useNavigate } from 'react-router-dom';
 
@@ -12,9 +11,6 @@ function Login() {
        
         navigate('/Signup');
     };
-
-
-
 
     return (
         <div>
