@@ -72,7 +72,7 @@ function Busmap() {
         </Flex>
 
         <Card mt={20}  padding="" radius="md" withBorder>
-          <div ref={mapContainerRef} style={{ minHeight: `calc(100vh - 220px)`, zIndex: '10' }} />
+          <div ref={mapContainerRef} style={{ minHeight: `calc(100dvh - 220px)`, zIndex: '10' }} />
         </Card>
 
       </Box>
