@@ -15,13 +15,13 @@ function Login() {
                 style={{ height: '100dvh', width: '100dwh' }}
             >
                 <Box style={{width:"350px"}}>
-                    <Image
+                    {/* <Image
                         radius="md"
                         h={250}
                         w="auto"
                         fit="contain"
                         src={Addresspana}
-                    />
+                    /> */}
                     <Box>
                         <Image
                             my={10}
@@ -36,6 +36,7 @@ function Login() {
                             mt={20}
                             label="email"
                             placeholder=""
+                            type='email'
                         />
                         <PasswordInput
                             my={10}

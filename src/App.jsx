@@ -2,6 +2,7 @@ import '@mantine/core/styles.css';
 import { ColorSchemeScript, MantineProvider } from '@mantine/core';
 import Login from './Pages/Login';
 import SignUp from './Pages/SignUp';
+import PasswordReset from './Pages/PasswordReset';
 
 function App() {
 
@@ -10,8 +11,10 @@ function App() {
       <ColorSchemeScript defaultColorScheme="auto" />
       <MantineProvider defaultColorScheme="auto">
 
-        <SignUp />
-        <Login/>
+        {/* <SignUp />
+        <Login/> */}
+
+        <PasswordReset/>
 
       </MantineProvider>
     </>

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Image, Flex, Mark, Grid, Title, Text, TextInput, Button, PasswordInput, Box } from '@mantine/core';
+import { Image, NumberInput,Group, Select, Flex, Mark, Grid, Title, Text, TextInput, Button, PasswordInput, Box } from '@mantine/core';
 import logo from "../assets/favCami.svg"
 
 function SignUp() {
@@ -25,21 +25,48 @@ function SignUp() {
                     <Title order={1}> Sign Up </Title>
                     <TextInput
                         mt={20}
-                        label="email"
+                        label="Register Number"
+                        placeholder="TLY00XY000"
+                    />
+                    <TextInput
+                        my={10}
+                        label="Name"
                         placeholder=""
                     />
+
+                    <Flex gap={'sm'}>
+                    <Select
+                        my={10}
+                        label="Department"
+                        placeholder="Choose Department"
+                        data={['IT', 'CS', 'EC', 'EEE']}
+
+                    />
+                    <NumberInput
+                        my={10}
+                        label="Admission Year"
+                        placeholder="Year"
+                        min={2020}
+                        max={2090}
+                    />
+                    </Flex>
+                    
+                    <TextInput
+                            mt={20}
+                            label="Email Address"
+                            placeholder=""
+                            type='email'
+                        />
+
                     <PasswordInput
                         my={10}
                         mb={20}
-                        label="Password"
+                        label="Create Password"
                         placeholder=""
                     />
                     <Button color='blue' radius="md" size='md' fullWidth> Create Account  </Button>
                     <Text ta="center" mt={10} c="dimmed">Already have an account? Sign In</Text>
                 </Box>
-
-
-
             </Flex>
 
         </div>
