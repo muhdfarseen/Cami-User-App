@@ -3,6 +3,7 @@ import { ColorSchemeScript, MantineProvider } from '@mantine/core';
 import Login from './Pages/Login';
 import SignUp from './Pages/SignUp';
 import PasswordReset from './Pages/PasswordReset';
+import Profile from './Pages/Profile';
 
 function App() {
 
@@ -12,9 +13,12 @@ function App() {
       <MantineProvider defaultColorScheme="auto">
 
         {/* <SignUp />
-        <Login/> */}
+        <Login/>
+        <PasswordReset/>*/}
 
-        <PasswordReset/>
+        <Profile/>
+
+        
 
       </MantineProvider>
     </>

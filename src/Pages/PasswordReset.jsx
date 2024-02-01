@@ -5,7 +5,7 @@ import { IconInfoCircle } from '@tabler/icons-react';
 
 function PasswordReset() {
     const [opened, { open, close }] = useDisclosure(false);
-   
+
 
     return (
         <div>
@@ -45,7 +45,7 @@ function PasswordReset() {
 
                     <Modal centered opened={opened} onClose={close} withCloseButton={false}>
 
-                    <Alert variant="light" color="indigo" title="Didn't receive your code?" icon={<IconInfoCircle/>}>
+                        <Alert variant="light" color="indigo" title="Didn't receive your code?" icon={<IconInfoCircle />}>
                             Allow a few minutes for the message to arrive.
                         </Alert>
 
@@ -71,12 +71,6 @@ function PasswordReset() {
                             <PinInput placeholder="" type="number" oneTimeCode />
                             <Button variant='default' radius="lg" size='xs'> Resend Code </Button>
                         </Flex>
-
-                        
-
-
-
-
 
                         <Button mt={20} color='blue' radius="md" size='md' fullWidth> Reset Password  </Button>
 
