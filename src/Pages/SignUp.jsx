@@ -1,8 +1,19 @@
 import React from 'react'
-import { Image, NumberInput,Group, Select, Flex, Mark, Grid, Title, Text, TextInput, Button, PasswordInput, Box } from '@mantine/core';
+import { Image, NumberInput, Group, Select, Flex, Mark, Grid, Title, Text, TextInput, Button, PasswordInput, Box } from '@mantine/core';
 import logo from "../assets/favCami.svg"
+import { useNavigate } from 'react-router-dom';
 
 function SignUp() {
+
+
+    const navigate = useNavigate();
+
+    const handleButtonClick = () => {
+
+        navigate('/Password Reset');
+    };
+
+
     return (
         <div>
             <Flex
@@ -13,7 +24,7 @@ function SignUp() {
                 p={20}
                 style={{ height: '100dvh', width: '100dwh' }}
             >
-                <Box style={{width:"350px"}}>
+                <Box style={{ width: "350px" }}>
                     <Image
                         my={10}
                         radius="md"
@@ -35,28 +46,28 @@ function SignUp() {
                     />
 
                     <Flex gap={'sm'}>
-                    <Select
-                        my={10}
-                        label="Department"
-                        placeholder="Choose Department"
-                        data={['IT', 'CS', 'EC', 'EEE']}
+                        <Select
+                            my={10}
+                            label="Department"
+                            placeholder="Choose Department"
+                            data={['IT', 'CS', 'EC', 'EEE']}
 
-                    />
-                    <NumberInput
-                        my={10}
-                        label="Admission Year"
-                        placeholder="Year"
-                        min={2020}
-                        max={2090}
-                    />
-                    </Flex>
-                    
-                    <TextInput
-                            mt={20}
-                            label="Email Address"
-                            placeholder=""
-                            type='email'
                         />
+                        <NumberInput
+                            my={10}
+                            label="Admission Year"
+                            placeholder="Year"
+                            min={2020}
+                            max={2090}
+                        />
+                    </Flex>
+
+                    <TextInput
+                        mt={20}
+                        label="Email Address"
+                        placeholder=""
+                        type='email'
+                    />
 
                     <PasswordInput
                         my={10}
@@ -64,7 +75,7 @@ function SignUp() {
                         label="Create Password"
                         placeholder=""
                     />
-                    <Button color='blue' radius="md" size='md' fullWidth> Create Account  </Button>
+                    <Button color='blue' radius="md" size='md' fullWidth onClick={handleButtonClick}> Create Account  </Button>
                     <Text ta="center" mt={10} c="dimmed">Already have an account? Sign In</Text>
                 </Box>
             </Flex>

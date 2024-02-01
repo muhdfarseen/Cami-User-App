@@ -2,9 +2,17 @@ import React from 'react'
 import { Image, Alert, PinInput, NumberInput, Modal, Group, Select, Flex, Mark, Grid, Title, Text, TextInput, Button, PasswordInput, Box } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import { IconInfoCircle } from '@tabler/icons-react';
+import { useNavigate } from 'react-router-dom';
 
 function PasswordReset() {
     const [opened, { open, close }] = useDisclosure(false);
+
+    const navigate = useNavigate();
+
+    const handleButtonClick = () => {
+
+        navigate('/Profile');
+    };
 
 
     return (
@@ -72,7 +80,7 @@ function PasswordReset() {
                             <Button variant='default' radius="lg" size='xs'> Resend Code </Button>
                         </Flex>
 
-                        <Button mt={20} color='blue' radius="md" size='md' fullWidth> Reset Password  </Button>
+                        <Button mt={20} color='blue' radius="md" size='md' fullWidth onClick={handleButtonClick}> Reset Password  </Button>
 
                     </Modal>
 

@@ -4,10 +4,18 @@ import { IconLogout2, IconUserEdit, IconLock, IconCreditCard, IconInfoCircle } f
 import camicard from "../assets/CamiCard.svg"
 import camicardlogo from "../assets/CamiCardLogo.svg"
 import { useDisclosure } from '@mantine/hooks';
+import { useNavigate } from 'react-router-dom';
 
 function ProfileSettings() {
 
   const [opened, { open, close }] = useDisclosure(false);
+
+  const navigate = useNavigate();
+
+    const handleButtonClick = () => {
+
+        navigate('/');
+    };
 
   return (
     <div>
@@ -69,6 +77,7 @@ function ProfileSettings() {
             label="Log out"
             style={{ color: 'red' }}
             leftSection={<IconLogout2 size="1rem" stroke={1.5} />}
+            onClick={handleButtonClick}
           />
 
         </Flex>
