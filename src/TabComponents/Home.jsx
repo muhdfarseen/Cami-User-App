@@ -9,7 +9,7 @@ function Home() {
       <Grid p={30}>
         <Grid.Col span={{ base: 12, md: 6, lg: 3 }}>
 
-          <Title order={2}>Muhammed Farseen T P</Title>
+          <Title order={2}>Eva Martinez</Title>
           <Text fw={500} size="md" >Information Technology</Text>
           <Text size="md" c="dimmed" >2020 - 24 Batch</Text>
 
