@@ -83,7 +83,7 @@ function ProfileSettings() {
         </Flex>
       </Box>
 
-      <Modal size="20%" centered radius="md" opened={opened} onClose={close} withCloseButton={false} zIndex={20000}>
+      <Modal size="xs" centered opened={opened} onClose={close} withCloseButton={false} zIndex={2001} >
         <Title order={3}>Paid ₹500</Title>
         <Text fw={500} size="md" >on 17 jan 2024</Text>
         <Text fw={400} size="sm" >Valid till 30 March 2025</Text>
