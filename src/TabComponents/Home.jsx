@@ -6,8 +6,6 @@ import camicardlogo from "../assets/CamiCardLogo.svg"
 function Home() {
   return (
     <div>
-
-
       <Grid p={30}>
         <Grid.Col span={{ base: 12, md: 6, lg: 3 }}>
 
@@ -17,9 +15,8 @@ function Home() {
 
           <Box mt={30} >
             <BackgroundImage src={camicard} p={30} radius={10}>
-
               <Flex justify="space-between">
-                <Text fw={400} style={{letterSpacing:"3px"}} size="md" color='#515151' >TLY20IT038</Text>
+                <Text fw={400} style={{ letterSpacing: "3px" }} size="md" color='#515151' >TLY20IT038</Text>
                 <Image src={camicardlogo} w={60} ></Image>
               </Flex>
 
@@ -33,12 +30,11 @@ function Home() {
                   <Text color='#515151' fw={700} size="lg" >07/25</Text>
                 </div>
               </Flex>
-
             </BackgroundImage>
           </Box>
+
         </Grid.Col>
       </Grid>
-
     </div>
   )
 }
