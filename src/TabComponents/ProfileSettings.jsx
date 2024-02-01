@@ -26,7 +26,7 @@ function ProfileSettings() {
           <Grid.Col span={{ base: 12, md: 6, lg: 3 }}>
 
             <Box mb={20} >
-              <BackgroundImage src={camicard} p={30} radius={10}>
+              <Box style={{ backgroundImage: `url(${camicard})`, borderRadius:'10px' }} p={30} radius={10}>
                 <Flex justify="space-between">
                   <Text fw={400} style={{ letterSpacing: "3px" }} size="md" color='#515151' >TLY20IT038</Text>
                   <Image src={camicardlogo} w={60} ></Image>
@@ -42,7 +42,7 @@ function ProfileSettings() {
                     <Text color='#515151' fw={700} size="lg" >07/25</Text>
                   </div>
                 </Flex>
-              </BackgroundImage>
+              </Box>
             </Box>
 
             <Title order={3}>Eva Martinez</Title>
