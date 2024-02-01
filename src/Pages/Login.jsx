@@ -23,7 +23,7 @@ function Login() {
                 p={20}
                 style={{ height: '100dvh', width: '100dwh' }}
             >
-                <Box style={{ width: "350px" }}>
+                <Box style={{ width: "280px" }}>
                     {/* <Image
                         radius="md"
                         h={250}

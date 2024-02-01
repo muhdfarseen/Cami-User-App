@@ -14,7 +14,6 @@ function PasswordReset() {
         navigate('/Profile');
     };
 
-
     return (
         <div>
 
@@ -26,7 +25,7 @@ function PasswordReset() {
                 p={20}
                 style={{ height: '100dvh', width: '100dwh' }}
             >
-                <Box style={{ width: "350px" }}>
+                <Box style={{ width: "280px" }}>
 
                     <Flex justify="space-between" align="center">
                         <Title order={2}>Forgot Password?</Title>
