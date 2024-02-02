@@ -52,7 +52,7 @@ function PasswordReset() {
 
                     <Modal centered opened={opened} onClose={close} withCloseButton={false}>
 
-                        <Alert variant="light" color="indigo" title="Didn't receive your code?" icon={<IconInfoCircle />}>
+                        <Alert variant="light" color="blue" title="Didn't receive your code?" icon={<IconInfoCircle />}>
                             Allow a few minutes for the message to arrive.
                         </Alert>
 

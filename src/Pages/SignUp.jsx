@@ -45,16 +45,16 @@ function SignUp() {
                         placeholder=""
                     />
 
-                    <Flex gap={'sm'}>
+                    <Flex gap={'sm'} my={10}>
                         <Select
-                            my={10}
+                           
                             label="Department"
                             placeholder="Choose Department"
                             data={['IT', 'CS', 'EC', 'EEE']}
 
                         />
                         <NumberInput
-                            my={10}
+                           
                             label="Admission Year"
                             placeholder="Year"
                             min={2020}
@@ -63,19 +63,18 @@ function SignUp() {
                     </Flex>
 
                     <TextInput
-                        mt={20}
+                        mt={10}
                         label="Email Address"
                         placeholder=""
                         type='email'
                     />
 
                     <PasswordInput
-                        my={10}
-                        mb={20}
+                        mt={10}
                         label="Create Password"
                         placeholder=""
                     />
-                    <Button color='blue' radius="md" size='md' fullWidth onClick={handleButtonClick}> Create Account  </Button>
+                    <Button mt={20} color='blue' radius="md" size='md' fullWidth onClick={handleButtonClick}> Create Account  </Button>
                     <Text ta="center" mt={10} c="dimmed">Already have an account? Sign In</Text>
                 </Box>
             </Flex>

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Tabs, rem } from '@mantine/core';
-import { IconHome, IconMessage, IconBus, IconSettings } from '@tabler/icons-react';
+import { IconHome, IconUserCircle, IconMessage, IconBus, IconSettings } from '@tabler/icons-react';
 import Home from '../TabComponents/Home';
 import Busmap from '../TabComponents/Busmap';
 import Messages from '../TabComponents/Messages';
@@ -43,7 +43,7 @@ function Profile() {
           {/* <Tabs.Tab value="home" leftSection={<IconHome style={iconStyle} />}> </Tabs.Tab> */}
           <Tabs.Tab value="busmap" leftSection={<IconBus style={iconStyle} />}> </Tabs.Tab>
           <Tabs.Tab value="messages" leftSection={<IconMessage style={iconStyle} />}> </Tabs.Tab>
-          <Tabs.Tab value="profilesettings" leftSection={<IconSettings style={iconStyle} />}> </Tabs.Tab>
+          <Tabs.Tab value="profilesettings" leftSection={<IconUserCircle style={iconStyle} />}> </Tabs.Tab>
         </Tabs.List>
       </Tabs>
     </div>

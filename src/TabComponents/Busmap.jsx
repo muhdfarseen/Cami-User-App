@@ -59,21 +59,20 @@ function Busmap() {
     <div>
       <Box p={30}>
 
-        <Flex direction='column' wrap="wrap">
-          <Title order={2}>Where is my Bus</Title>
-          <SegmentedControl
-            mt={20}
-            size="md"
-            fullWidth
-            data={['1', '2', '3', '4', '5', '6']}
-            value={selectedBus}
-            onChange={handleBusChange}
-          />
-        </Flex>
+        <Title order={2}>Where is my Bus</Title>
 
-        <Card mt={20}  padding="" radius="md" withBorder>
+        <Card mt={20} padding="" radius="md" withBorder>
           <div ref={mapContainerRef} style={{ minHeight: `calc(100dvh - 220px)`, zIndex: '10' }} />
         </Card>
+
+        <SegmentedControl
+          mt={20}
+          size="md"
+          fullWidth
+          data={['1', '2', '3', '4', '5', '6']}
+          value={selectedBus}
+          onChange={handleBusChange}
+        />
 
       </Box>
     </div>
