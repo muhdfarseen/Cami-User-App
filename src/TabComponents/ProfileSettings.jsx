@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { useState } from 'react';
 import { Divider, Image, Drawer, NavLink, rem, Badge, Center, Group, SegmentedControl, Card, Title, BackgroundImage, Alert, PinInput, NumberInput, Modal, Select, Flex, Mark, Grid, Text, TextInput, Button, PasswordInput, Box } from '@mantine/core';
-import { IconLogout2, IconUserEdit, IconLock, IconCreditCard, IconInfoCircle } from '@tabler/icons-react'
+import { IconLogout2, IconMailExclamation, IconLock, IconCreditCard, IconInfoCircle } from '@tabler/icons-react'
 import camicard from "/CamiCard.svg"
 import camicardlogo from "/CamiCardLogo.svg"
 import { useDisclosure } from '@mantine/hooks';
@@ -8,14 +8,16 @@ import { useNavigate } from 'react-router-dom';
 
 function ProfileSettings() {
 
-  const [opened, { open, close }] = useDisclosure(false);
+  const [EditProfileModalOpened, { open: openEditProfileModal, close: closeEditProfileModal }] = useDisclosure(false);
+  const [paymentModalOpened, { open: openPaymentModal, close: closePaymentModal }] = useDisclosure(false);
+  const [passwordModalOpened, { open: openPasswordModal, close: closePasswordModal }] = useDisclosure(false);
 
   const navigate = useNavigate();
 
-    const handleButtonClick = () => {
+  const handleButtonClick = () => {
 
-        navigate('/');
-    };
+    navigate('/');
+  };
 
   return (
     <div>
@@ -26,7 +28,7 @@ function ProfileSettings() {
           <Grid.Col span={{ base: 12, md: 6, lg: 3 }}>
 
             <Box mb={20} >
-              <Box style={{ backgroundImage: `url(${camicard})`, borderRadius:'10px' }} p={30} radius={10}>
+              <Box style={{ backgroundImage: `url(${camicard})`, borderRadius: '10px' }} p={30} radius={10}>
                 <Flex justify="space-between">
                   <Text fw={400} style={{ letterSpacing: "3px" }} size="md" color='#515151' >TLY20IT038</Text>
                   <Image src={camicardlogo} w={60} ></Image>
@@ -57,22 +59,28 @@ function ProfileSettings() {
         <Flex mt={20} pb={80} direction="column" gap={10}>
 
           <NavLink
-            label="Edit Profile"
-            leftSection={<IconUserEdit size="1rem" stroke={1.5} />}
+            label="Change Email Address"
+            leftSection={<IconMailExclamation size="1rem" stroke={1.5} />}
+            onClick={openEditProfileModal}
           />
+
           <NavLink
             label="Change Password"
             leftSection={<IconLock size="1rem" stroke={1.5} />}
+            onClick={openPasswordModal}
           />
+
           <NavLink
             label="Payment Details"
-            onClick={open}
             leftSection={<IconCreditCard size="1rem" stroke={1.5} />}
+            onClick={openPaymentModal}
           />
+
           <NavLink
             label="About"
             leftSection={<IconInfoCircle size="1rem" stroke={1.5} />}
           />
+
           <NavLink
             label="Log out"
             style={{ color: 'red' }}
@@ -83,10 +91,52 @@ function ProfileSettings() {
         </Flex>
       </Box>
 
-      <Modal size="xs" centered opened={opened} onClose={close} withCloseButton={false} zIndex={2001} >
+      {/* Modal for Edit Profile */}
+
+      <Modal size="xs" centered opened={EditProfileModalOpened} onClose={closeEditProfileModal} withCloseButton={false} zIndex={2001} >
+        <Title order={3}>Change Email Address</Title>
+        <TextInput
+          mt={10}
+          label="New Email Address"
+          placeholder=""
+          type='email'
+        />
+        <PasswordInput
+          mt={10}
+          label="Password"
+          placeholder=""
+        />
+        <Button mt={20} color='blue' radius="md" size='md' fullWidth > Change Email  </Button>
+      </Modal>
+
+      {/* Modal for Payment Details */}
+
+      <Modal size="xs" centered opened={paymentModalOpened} onClose={closePaymentModal} withCloseButton={false} zIndex={2001} >
         <Title order={3}>Paid ₹500</Title>
-        <Text fw={500} size="md" >on 17 jan 2024</Text>
-        <Text fw={400} size="sm" >Valid till 30 March 2025</Text>
+        <Text fw={500} size="xs" >on 17 Jan 2024</Text>
+        <Text fw={400} size="md" mt={10} c="gray" >Valid till 30 March 2025</Text>
+      </Modal>
+
+      {/* Modal for Change Password */}
+
+      <Modal size="xs" centered opened={passwordModalOpened} onClose={closePasswordModal} withCloseButton={false} zIndex={2001} >
+        <Title order={3}>Change Password</Title>
+        <PasswordInput
+          mt={10}
+          label="Current Password"
+          placeholder=""
+        />
+        <PasswordInput
+          mt={10}
+          label="New Password"
+          placeholder=""
+        />
+        <PasswordInput
+          mt={10}
+          label="Confirm Password"
+          placeholder=""
+        />
+        <Button mt={20} color='blue' radius="md" size='md' fullWidth > Change Password  </Button>
       </Modal>
 
     </div>
