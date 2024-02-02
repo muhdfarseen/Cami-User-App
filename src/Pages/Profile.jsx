@@ -7,7 +7,7 @@ import Messages from '../TabComponents/Messages';
 import ProfileSettings from '../TabComponents/ProfileSettings';
 
 function Profile() {
-  const iconStyle = { width: rem(15), height: rem(15) };
+  const iconStyle = { width: rem(20), height: rem(20) };
   const [tabListBackgroundColor, setTabListBackgroundColor] = useState('');
 
   useEffect(() => {
