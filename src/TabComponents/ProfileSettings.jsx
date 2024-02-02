@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Divider, Image, Drawer, NavLink, rem, Badge, Center, Group, SegmentedControl, Card, Title, BackgroundImage, Alert, PinInput, NumberInput, Modal, Select, Flex, Mark, Grid, Text, TextInput, Button, PasswordInput, Box } from '@mantine/core';
-import { IconLogout2, IconMailExclamation, IconLock, IconCreditCard, IconInfoCircle } from '@tabler/icons-react'
+import { Divider, Paper, ThemeIcon, Image, Drawer, NavLink, rem, Badge, Center, Group, SegmentedControl, Card, Title, BackgroundImage, Alert, PinInput, NumberInput, Modal, Select, Flex, Mark, Grid, Text, TextInput, Button, PasswordInput, Box } from '@mantine/core';
+import { IconLogout2, IconBusStop, IconMailExclamation, IconLock, IconCreditCard, IconInfoCircle } from '@tabler/icons-react'
 import camicard from "/CamiCard.svg"
 import camicardlogo from "/CamiCardLogo.svg"
 import { useDisclosure } from '@mantine/hooks';
@@ -28,7 +28,14 @@ function ProfileSettings() {
           <Grid.Col span={{ base: 12, md: 6, lg: 3 }}>
 
             <Box mb={20} >
-              <Box style={{ backgroundImage: `url(${camicard})`, borderRadius: '10px' }} p={30} radius={10}>
+              <Box
+                style={{
+                  backgroundImage: `url(${camicard})`,
+                  backgroundRepeat: 'no-repeat',
+                  backgroundSize: 'cover',
+                  borderRadius: '15px',
+                }} p={30}
+              >
                 <Flex justify="space-between">
                   <Text fw={400} style={{ letterSpacing: "3px" }} size="md" color='#515151' >TLY20IT038</Text>
                   <Image src={camicardlogo} w={60} ></Image>
@@ -44,6 +51,7 @@ function ProfileSettings() {
                     <Text color='#515151' fw={700} size="lg" >07/25</Text>
                   </div>
                 </Flex>
+                
               </Box>
             </Box>
 
@@ -57,6 +65,14 @@ function ProfileSettings() {
         <Divider my="md" />
 
         <Flex mt={20} pb={80} direction="column" gap={10}>
+
+
+          <NavLink
+            disabled
+            label="Bus Number : 1"
+            leftSection={<IconBusStop size="1rem" stroke={1.5} />}
+          />
+
 
           <NavLink
             label="Change Email Address"
