@@ -8,9 +8,12 @@ function SignUp() {
 
     const navigate = useNavigate();
 
-    const handleButtonClick = () => {
-
-        navigate('/Password Reset');
+    const handleCreateAccClick = () => {
+        navigate('/');
+    };
+    
+    const handleSignInClick = () => {
+        navigate('/');
     };
 
 
@@ -74,8 +77,8 @@ function SignUp() {
                         label="Create Password"
                         placeholder=""
                     />
-                    <Button mt={20} color='blue' radius="md" size='md' fullWidth onClick={handleButtonClick}> Create Account  </Button>
-                    <Text ta="center" mt={10} c="dimmed">Already have an account? Sign In</Text>
+                    <Button mt={20} color='blue' radius="md" size='md' fullWidth onClick={handleCreateAccClick}> Create Account  </Button>
+                    <Text ta="center" style={{cursor:"pointer"}} mt={10} c="dimmed" onClick={handleSignInClick}>Already have an account? Sign In</Text>
                 </Box>
             </Flex>
 

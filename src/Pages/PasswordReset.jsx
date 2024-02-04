@@ -9,9 +9,12 @@ function PasswordReset() {
 
     const navigate = useNavigate();
 
-    const handleButtonClick = () => {
+    const handleResetPasswordClick = () => {
+        navigate('/');
+    };
 
-        navigate('/Profile');
+    const handleGoBackClick = () => {
+        navigate('/');
     };
 
     return (
@@ -29,7 +32,7 @@ function PasswordReset() {
 
                     <Flex justify="space-between" align="center">
                         <Title order={2}>Forgot Password?</Title>
-                        <Button variant='default' radius="lg" size='xs'> Go Back  </Button>
+                        <Button variant='default' radius="lg" size='xs' onClick={handleGoBackClick}> Go Back  </Button>
                     </Flex>
 
                     <Text size="sm" mt={20}>
@@ -79,7 +82,7 @@ function PasswordReset() {
                             <Button variant='default' radius="lg" size='xs'> Resend Code </Button>
                         </Flex>
 
-                        <Button mt={20} color='blue' radius="md" size='md' fullWidth onClick={handleButtonClick}> Reset Password  </Button>
+                        <Button mt={20} color='blue' radius="md" size='md' fullWidth onClick={handleResetPasswordClick}> Reset Password  </Button>
 
                     </Modal>
 

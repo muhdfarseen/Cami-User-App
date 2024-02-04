@@ -8,9 +8,14 @@ function Login() {
 
     const navigate = useNavigate();
 
-    const handleButtonClick = () => {
-       
+    const handleLoginClick = () => {
+        navigate('/Profile');
+    };
+    const handleSignuoClick = () => {
         navigate('/Signup');
+    };
+    const handleForgotPasswordClick = () => {
+        navigate('/Password Reset');
     };
 
     return (
@@ -53,9 +58,9 @@ function Login() {
                             label="Password"
                             placeholder=""
                         />
-                        <Button color='blue' radius="md" size='md' fullWidth onClick={handleButtonClick}> Sign in  </Button>
-                        <Text ta="center" mt={10} c="dimmed">Dont have an account? Sign up</Text>
-                        <Text ta="center" mt={10} c="dimmed">Forgot password</Text>
+                        <Button color='blue'  radius="md" size='md' fullWidth onClick={handleLoginClick}> Sign in  </Button>
+                        <Text ta="center" mt={10} c="dimmed" style={{cursor:"pointer"}} onClick={handleSignuoClick}>Dont have an account? Sign up</Text>
+                        <Text ta="center" mt={10} c="dimmed" style={{cursor:"pointer"}} onClick={handleForgotPasswordClick}>Forgot password</Text>
                     </Box>
                 </Box>
             </Flex>
