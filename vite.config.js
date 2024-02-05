@@ -8,7 +8,7 @@ const manifestForPlugIn = {
   manifest:{
     name:"Cami",
     short_name:"Cami",
-    description:"Cami-User-App",
+    description:"Cami User App",
     icons:[{
       src: '/android-chrome-192x192.png',
       sizes:'192x192',
@@ -28,7 +28,7 @@ const manifestForPlugIn = {
       purpose:'apple touch icon',
     },
     {
-      src: '/masked-icon.png',
+      src: '/maskable_icon.png',
       sizes:'512x512',
       type:'image/png',
       purpose:'any maskable',
@@ -43,6 +43,7 @@ const manifestForPlugIn = {
   }
 }
 
+// https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react(), VitePWA(manifestForPlugIn)],
 })
