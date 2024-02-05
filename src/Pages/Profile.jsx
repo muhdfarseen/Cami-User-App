@@ -39,7 +39,7 @@ function Profile() {
         <Tabs.Panel value="messages"> <Messages /> </Tabs.Panel>
         <Tabs.Panel value="profilesettings"> <ProfileSettings /> </Tabs.Panel>
 
-        <Tabs.List style={{ position: 'fixed', bottom: 0, background: tabListBackgroundColor, height: '120px', paddingBottom:'50px', width: '100%', zIndex: 1000 }} grow>
+        <Tabs.List style={{ position: 'fixed', bottom: 0, background: tabListBackgroundColor, height: '90px', paddingBottom:"40px", width: '100%', zIndex: 1000 }} grow>
           {/* <Tabs.Tab value="home" leftSection={<IconHome style={iconStyle} />}> </Tabs.Tab> */}
           <Tabs.Tab value="busmap" leftSection={<IconBus style={iconStyle} />}> </Tabs.Tab>
           <Tabs.Tab value="messages" leftSection={<IconMessage style={iconStyle} />}> </Tabs.Tab>

@@ -62,7 +62,7 @@ function Busmap() {
         <Title order={2}>Where is my Bus</Title>
 
         <Card mt={20} padding="" radius="md" withBorder>
-          <div ref={mapContainerRef} style={{ minHeight: `calc(100dvh - 220px)`, zIndex: '10' }} />
+          <div ref={mapContainerRef} style={{ minHeight: `calc(100dvh - 260px)`, zIndex: '10' }} />
         </Card>
 
         <SegmentedControl
