@@ -33,8 +33,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.21.3",
-    "recharts": "^2.11.0",
-    "vite-plugin-pwa": "^0.17.5"
+    "recharts": "^2.11.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.43",
@@ -47,6 +46,8 @@
     "postcss": "^8.4.33",
     "postcss-preset-mantine": "^1.12.3",
     "postcss-simple-vars": "^7.0.1",
-    "vite": "^5.0.8"
+    "vite": "^5.0.8",
+    "vite-plugin-pwa": "^0.17.5",
+    "workbox-window": "^7.0.0"
   }
 }
