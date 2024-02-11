@@ -19,8 +19,8 @@ function ProfileSettings() {
 
   const formatDateMY = (dateString) => {
     const date = new Date(dateString);
-    const month = date.getMonth() + 1; // Adding 1 because getMonth() returns zero-based month index
-    const year = date.getFullYear().toString().slice(-2); // Extract last two digits of the year
+    const month = date.getMonth() + 1; 
+    const year = date.getFullYear().toString().slice(-2); 
 
     return `${month}/${year}`;
   };
@@ -53,18 +53,18 @@ function ProfileSettings() {
                 }} p={30}
               >
                 <Flex justify="space-between">
-                  <Text fw={400} style={{ letterSpacing: "3px" }} size="md" color='#515151' >{userData.register_number}</Text>
+                  <Text fw={400} style={{ letterSpacing: "3px" }} size="md" color='#515151' >{userData.register_number || '_'}</Text>
                   <Image src={camicardlogo} w={60} ></Image>
                 </Flex>
 
                 <Flex mt="25%" justify="space-between">
                   <div>
                     <Text color='#515151' size="xs" >Caming From</Text>
-                    <Text color='#515151' fw={700} size="lg" >{userData.bus_from}</Text>
+                    <Text color='#515151' fw={700} size="lg" >{userData.bus_from || '_'}</Text>
                   </div>
                   <div>
                     <Text color='#515151' size="xs" >Valid till</Text>
-                    <Text color='#515151' fw={700} size="lg" >{formatDateMY(userData.pass_expires_on)}</Text>
+                    <Text color='#515151' fw={700} size="lg" >{formatDateMY(userData.pass_expires_on || '_')}</Text>
                   </div>
                 </Flex>
 
@@ -82,24 +82,24 @@ function ProfileSettings() {
 
         <Flex mt={20} pb={80} direction="column" gap={10}>
 
-          <Title order={3}>{userData.full_name}</Title>
+          <Title order={3}>{userData.full_name || '_'}</Title>
           <Badge color='dark' variant='light' size='lg' leftSection={<IconBusStop size="1rem" stroke={1.5} />}>2</Badge>
 
           <NavLink
             disabled
-            label={userData.department}
+            label={userData.department || '_'}
             leftSection={<IconCategory size="1rem" stroke={1.5} />}
           />
 
           <NavLink
             disabled
-            label={userData.admission_year}
+            label={userData.admission_year || '_'}
             leftSection={<IconDoorEnter size="1rem" stroke={1.5} />}
           />
 
           <NavLink
             disabled
-            label={userData.email_id}
+            label={userData.email_id || '_'}
             leftSection={<IconMail size="1rem" stroke={1.5} />}
           />
 
@@ -166,8 +166,8 @@ function ProfileSettings() {
 
       <Modal size="xs" centered opened={paymentModalOpened} onClose={closePaymentModal} withCloseButton={false} zIndex={2001} >
         <Title order={3}>Paid ₹{userData.amount_paid}</Title>
-        <Text fw={500} size="xs" >on {formatDate(userData.paid_on)}</Text>
-        <Text fw={400} size="md" mt={10} c="gray" >Valid {formatDate(userData.pass_expires_on)}</Text>
+        <Text fw={500} size="xs" >on {formatDate(userData.paid_on || '_')}</Text>
+        <Text fw={400} size="md" mt={10} c="gray" >Valid {formatDate(userData.pass_expires_on || '_' )}</Text>
       </Modal>
 
       {/* Modal for Change Password */}
