@@ -15,7 +15,7 @@ function Login() {
             dob: dob,
         }).then((response) => {
             if (!response.data.message) {
-                // Store student data in localStorage
+                // Store all student data in localStorage
                 localStorage.setItem('studentData', JSON.stringify(response.data));
                 
                 setLoginStatus('Login successful');
@@ -27,6 +27,7 @@ function Login() {
             console.error('Error logging in:', error);
         });
     };
+    
 
     const handleSignupClick = () => {
         navigate('/Signup');

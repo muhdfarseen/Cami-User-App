@@ -12,12 +12,28 @@ function ProfileSettings() {
   const [paymentModalOpened, { open: openPaymentModal, close: closePaymentModal }] = useDisclosure(false);
   const [passwordModalOpened, { open: openPasswordModal, close: closePasswordModal }] = useDisclosure(false);
 
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    return date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+  };
+
+  const formatDateMY = (dateString) => {
+    const date = new Date(dateString);
+    const month = date.getMonth() + 1; // Adding 1 because getMonth() returns zero-based month index
+    const year = date.getFullYear().toString().slice(-2); // Extract last two digits of the year
+
+    return `${month}/${year}`;
+  };
+
+  const [userData, setUserData] = useState(JSON.parse(localStorage.getItem('studentData')) || {});
+
   const navigate = useNavigate();
 
   const handleButtonClick = () => {
-
+    localStorage.removeItem('studentData');
     navigate('/');
   };
+
 
   return (
     <div>
@@ -37,18 +53,18 @@ function ProfileSettings() {
                 }} p={30}
               >
                 <Flex justify="space-between">
-                  <Text fw={400} style={{ letterSpacing: "3px" }} size="md" color='#515151' >TLY20IT038</Text>
+                  <Text fw={400} style={{ letterSpacing: "3px" }} size="md" color='#515151' >{userData.register_number}</Text>
                   <Image src={camicardlogo} w={60} ></Image>
                 </Flex>
 
                 <Flex mt="25%" justify="space-between">
                   <div>
                     <Text color='#515151' size="xs" >Caming From</Text>
-                    <Text color='#515151' fw={700} size="lg" >Kannur Stand</Text>
+                    <Text color='#515151' fw={700} size="lg" >{userData.bus_from}</Text>
                   </div>
                   <div>
                     <Text color='#515151' size="xs" >Valid till</Text>
-                    <Text color='#515151' fw={700} size="lg" >07/25</Text>
+                    <Text color='#515151' fw={700} size="lg" >{formatDateMY(userData.pass_expires_on)}</Text>
                   </div>
                 </Flex>
 
@@ -66,32 +82,33 @@ function ProfileSettings() {
 
         <Flex mt={20} pb={80} direction="column" gap={10}>
 
-          <Title order={3}>Eva Martinez</Title>
+          <Title order={3}>{userData.full_name}</Title>
           <Badge color='dark' variant='light' size='lg' leftSection={<IconBusStop size="1rem" stroke={1.5} />}>2</Badge>
 
           <NavLink
             disabled
-            label="IT"
+            label={userData.department}
             leftSection={<IconCategory size="1rem" stroke={1.5} />}
           />
 
           <NavLink
             disabled
-            label="2024"
+            label={userData.admission_year}
             leftSection={<IconDoorEnter size="1rem" stroke={1.5} />}
           />
 
           <NavLink
             disabled
-            label="exapmle@yahoo.cpm"
+            label={userData.email_id}
             leftSection={<IconMail size="1rem" stroke={1.5} />}
           />
 
           <NavLink
             disabled
-            label="Bus Number : 1"
+            label={`Bus Number : ${userData.bus_number}`}
             leftSection={<IconBusStop size="1rem" stroke={1.5} />}
           />
+
 
 
           {/* <NavLink
@@ -148,9 +165,9 @@ function ProfileSettings() {
       {/* Modal for Payment Details */}
 
       <Modal size="xs" centered opened={paymentModalOpened} onClose={closePaymentModal} withCloseButton={false} zIndex={2001} >
-        <Title order={3}>Paid ₹500</Title>
-        <Text fw={500} size="xs" >on 17 Jan 2024</Text>
-        <Text fw={400} size="md" mt={10} c="gray" >Valid till 30 March 2025</Text>
+        <Title order={3}>Paid ₹{userData.amount_paid}</Title>
+        <Text fw={500} size="xs" >on {formatDate(userData.paid_on)}</Text>
+        <Text fw={400} size="md" mt={10} c="gray" >Valid {formatDate(userData.pass_expires_on)}</Text>
       </Modal>
 
       {/* Modal for Change Password */}
