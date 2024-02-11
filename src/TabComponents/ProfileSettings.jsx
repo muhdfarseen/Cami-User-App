@@ -67,7 +67,7 @@ function ProfileSettings() {
         <Flex mt={20} pb={80} direction="column" gap={10}>
 
           <Title order={3}>Eva Martinez</Title>
-          <Badge variant='light' size='lg' leftSection={<IconBusStop size="1rem" stroke={1.5} />}>2</Badge>
+          <Badge color='dark' variant='light' size='lg' leftSection={<IconBusStop size="1rem" stroke={1.5} />}>2</Badge>
 
           <NavLink
             disabled
