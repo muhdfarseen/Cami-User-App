@@ -10,9 +10,21 @@ function SignUp() {
 
     const navigate = useNavigate();
 
-    const handleInputChange = (name, value) => {
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
         setFormData({ ...formData, [name]: value });
     };
+
+    const handleChangeDepartment = (value) => {
+        setFormData({ ...formData, department: value });
+    };
+
+    const handleChangeAdmissionYear = (value) => {
+        setFormData({ ...formData, admission_year: value });
+    };
+
+
+
 
     const [formData, setFormData] = useState({
         register_number: '',
@@ -26,6 +38,12 @@ function SignUp() {
 
 
     const handleCreateAccClick = () => {
+        // Check if the admission year field is empty or not a number
+        if (formData.admission_year === '' || isNaN(formData.admission_year)) {
+            console.error('Admission year must be a valid number');
+            return;
+        }
+    
         axios.post(`${baseUrl}/register`, formData)
             .then(response => {
                 console.log(response.data);
@@ -35,6 +53,7 @@ function SignUp() {
                 console.error('Error registering user:', error);
             });
     };
+    
 
 
     const handleSignInClick = () => {
@@ -84,7 +103,7 @@ function SignUp() {
                             label="Department"
                             placeholder="Choose Department"
                             data={['IT', 'CS', 'EC', 'EEE']}
-                            onChange={(value) => handleInputChange('department', value)}
+                            onChange={handleChangeDepartment}
                             value={formData.department}
                         />
                         <NumberInput
@@ -92,10 +111,10 @@ function SignUp() {
                             placeholder="Year"
                             min={2020}
                             max={2090}
-                            onChange={(value) => handleInputChange('admission_year', value)}
-                            name="admission_year"
+                            onChange={handleChangeAdmissionYear}
                             value={formData.admission_year}
                         />
+
                     </Flex>
 
                     <TextInput
