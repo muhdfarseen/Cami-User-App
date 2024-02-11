@@ -29,13 +29,7 @@ function Login() {
                 style={{ height: '100dvh', width: '100dwh' }}
             >
                 <Box style={{ width: "280px" }}>
-                    {/* <Image
-                        radius="md"
-                        h={250}
-                        w="auto"
-                        fit="contain"
-                        src={Addresspana}
-                    /> */}
+                   
                     <Box>
                         <Image
                             my={10}
@@ -48,19 +42,19 @@ function Login() {
                         <Title order={1}> Sign in </Title>
                         <TextInput
                             mt={20}
-                            label="email"
+                            label="Register Number"
                             placeholder=""
-                            type='email'
+                            
                         />
-                        <PasswordInput
+                        <TextInput
                             my={10}
                             mb={20}
-                            label="Password"
-                            placeholder=""
+                            label="Date of Birth"
+                            placeholder="DD/MM/YYYY"
                         />
                         <Button color='blue'  radius="md" size='md' fullWidth onClick={handleLoginClick}> Sign in  </Button>
                         <Text ta="center" mt={10} c="dimmed" style={{cursor:"pointer"}} onClick={handleSignuoClick}>Dont have an account? Sign up</Text>
-                        <Text ta="center" mt={10} c="dimmed" style={{cursor:"pointer"}} onClick={handleForgotPasswordClick}>Forgot password</Text>
+                        {/* <Text ta="center" mt={10} c="dimmed" style={{cursor:"pointer"}} onClick={handleForgotPasswordClick}>Forgot password</Text> */}
                     </Box>
                 </Box>
             </Flex>

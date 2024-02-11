@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Divider, Paper, ThemeIcon, Image, Drawer, NavLink, rem, Badge, Center, Group, SegmentedControl, Card, Title, BackgroundImage, Alert, PinInput, NumberInput, Modal, Select, Flex, Mark, Grid, Text, TextInput, Button, PasswordInput, Box } from '@mantine/core';
-import { IconLogout2, IconBusStop, IconMailExclamation, IconLock, IconCreditCard, IconInfoCircle } from '@tabler/icons-react'
+import { IconLogout2, IconCategory, IconMail, IconDoorEnter, IconBusStop, IconMailExclamation, IconLock, IconCreditCard, IconInfoCircle } from '@tabler/icons-react'
 import camicard from "/CamiCard.svg"
 import camicardlogo from "/CamiCardLogo.svg"
 import { useDisclosure } from '@mantine/hooks';
@@ -51,13 +51,13 @@ function ProfileSettings() {
                     <Text color='#515151' fw={700} size="lg" >07/25</Text>
                   </div>
                 </Flex>
-                
+
               </Box>
             </Box>
 
-            <Title order={3}>Eva Martinez</Title>
-            <Text fw={500} size="md" >Information Technology</Text>
-            <Text size="md" c="dimmed" >2020 - 24 Batch</Text>
+            {/* <Title order={3}>Eva Martinez</Title>
+             <Text fw={500} size="md" >Information Technology</Text>
+            <Text size="md" c="dimmed" >2020 - 24 Batch</Text> */}
 
           </Grid.Col>
         </Grid>
@@ -66,6 +66,26 @@ function ProfileSettings() {
 
         <Flex mt={20} pb={80} direction="column" gap={10}>
 
+          <Title order={3}>Eva Martinez</Title>
+          <Badge variant='light' size='lg' leftSection={<IconBusStop size="1rem" stroke={1.5} />}>2</Badge>
+
+          <NavLink
+            disabled
+            label="IT"
+            leftSection={<IconCategory size="1rem" stroke={1.5} />}
+          />
+
+          <NavLink
+            disabled
+            label="2024"
+            leftSection={<IconDoorEnter size="1rem" stroke={1.5} />}
+          />
+
+          <NavLink
+            disabled
+            label="exapmle@yahoo.cpm"
+            leftSection={<IconMail size="1rem" stroke={1.5} />}
+          />
 
           <NavLink
             disabled
@@ -74,7 +94,7 @@ function ProfileSettings() {
           />
 
 
-          <NavLink
+          {/* <NavLink
             label="Change Email Address"
             leftSection={<IconMailExclamation size="1rem" stroke={1.5} />}
             onClick={openEditProfileModal}
@@ -84,7 +104,7 @@ function ProfileSettings() {
             label="Change Password"
             leftSection={<IconLock size="1rem" stroke={1.5} />}
             onClick={openPasswordModal}
-          />
+          /> */}
 
           <NavLink
             label="Payment Details"
