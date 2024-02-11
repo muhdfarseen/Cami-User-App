@@ -1,65 +1,56 @@
-import React from 'react'
-import { Image, Flex, Mark, Title, Text, TextInput, Button, PasswordInput, Box } from '@mantine/core';
-import logo from "/favCami.svg"
+import React, { useState } from 'react';
+import { Image, Flex, Title, Text, TextInput, Button, Box } from '@mantine/core';
 import { useNavigate } from 'react-router-dom';
-
+import Axios from 'axios';
 
 function Login() {
-
     const navigate = useNavigate();
+    const [registerNumber, setRegisterNumber] = useState('');
+    const [dob, setDOB] = useState('');
+    const [loginStatus, setLoginStatus] = useState('');
 
-    const handleLoginClick = () => {
-        navigate('/Profile');
+    const login = () => {
+        Axios.post("http://localhost:3000/login", {
+            registerNumber: registerNumber,
+            dob: dob,
+        }).then((response) => {
+            if (!response.data.message) {
+                // Store student data in localStorage
+                localStorage.setItem('studentData', JSON.stringify(response.data));
+                
+                setLoginStatus('Login successful');
+                navigate('/Profile');
+            } else {
+                setLoginStatus('Invalid credentials');
+            }
+        }).catch((error) => {
+            console.error('Error logging in:', error);
+        });
     };
-    const handleSignuoClick = () => {
+
+    const handleSignupClick = () => {
         navigate('/Signup');
-    };
-    const handleForgotPasswordClick = () => {
-        navigate('/Password Reset');
     };
 
     return (
         <div>
-
-            <Flex justify="center"
-                align="center"
-                direction="column"
-                wrap="wrap"
-                p={20}
-                style={{ height: '100dvh', width: '100dwh' }}
-            >
-                <Box style={{ width: "280px" }}>
-                   
+            <Flex justify="center" align="center" direction="column" wrap="wrap" p={20} style={{ height: '100vh', width: '100vw' }}>
+                <Box style={{ width: '280px' }}>
                     <Box>
-                        <Image
-                            my={10}
-                            radius="md"
-                            h={50}
-                            w="auto"
-                            fit="contain"
-                            src={logo}
-                        />
-                        <Title order={1}> Sign in </Title>
-                        <TextInput
-                            mt={20}
-                            label="Register Number"
-                            placeholder=""
-                            
-                        />
-                        <TextInput
-                            my={10}
-                            mb={20}
-                            label="Date of Birth"
-                            placeholder="DD/MM/YYYY"
-                        />
-                        <Button color='blue'  radius="md" size='md' fullWidth onClick={handleLoginClick}> Sign in  </Button>
-                        <Text ta="center" mt={10} c="dimmed" style={{cursor:"pointer"}} onClick={handleSignuoClick}>Dont have an account? Sign up</Text>
-                        {/* <Text ta="center" mt={10} c="dimmed" style={{cursor:"pointer"}} onClick={handleForgotPasswordClick}>Forgot password</Text> */}
+                        <Title order={1}>Sign in</Title>
+                        <TextInput mt={20} label="Register Number" placeholder="" value={registerNumber} onChange={(event) => setRegisterNumber(event.target.value)} />
+                        <TextInput my={10} mb={20} label="Date of Birth" placeholder="DD/MM/YYYY" value={dob} onChange={(event) => setDOB(event.target.value)} />
+                        <Button color="blue" radius="md" size="md" fullWidth onClick={login}>
+                            Sign in
+                        </Button>
+                        <Text ta="center" mt={10} c="dimmed" style={{ cursor: 'pointer' }} onClick={handleSignupClick}>
+                            Don't have an account? Sign up
+                        </Text>
                     </Box>
                 </Box>
             </Flex>
         </div>
-    )
+    );
 }
 
-export default Login
+export default Login;
