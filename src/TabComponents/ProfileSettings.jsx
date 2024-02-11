@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Divider, Paper, ThemeIcon, Image, Drawer, NavLink, rem, Badge, Center, Group, SegmentedControl, Card, Title, BackgroundImage, Alert, PinInput, NumberInput, Modal, Select, Flex, Mark, Grid, Text, TextInput, Button, PasswordInput, Box } from '@mantine/core';
 import { IconLogout2, IconCategory, IconMail, IconDoorEnter, IconBusStop, IconMailExclamation, IconLock, IconCreditCard, IconInfoCircle } from '@tabler/icons-react'
 import camicard from "/CamiCard.svg"
@@ -33,6 +33,12 @@ function ProfileSettings() {
     localStorage.removeItem('studentData');
     navigate('/');
   };
+
+  useEffect(() => {
+    if (!userData.full_name) {
+      navigate('/');
+    }
+  }, [userData.full_name, navigate]);
 
 
   return (
