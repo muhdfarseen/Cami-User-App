@@ -1,11 +1,12 @@
-import React, { useEffect } from 'react';
+import React from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import '@mantine/core/styles.css';
 import { ColorSchemeScript, MantineProvider } from '@mantine/core';
+import RedirectIfNoUserData from './RedirectIfNoUserData';
 import Login from './Pages/Login';
 import SignUp from './Pages/SignUp';
 import PasswordReset from './Pages/PasswordReset';
 import Profile from './Pages/Profile';
-import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
 
 function App() {
   return (
@@ -13,8 +14,9 @@ function App() {
       <ColorSchemeScript defaultColorScheme="auto" />
       <MantineProvider defaultColorScheme="auto">
         <BrowserRouter>
+          <RedirectIfNoUserData />
           <Routes>
-            <Route path="/" element={<LoginOrRedirect />} />
+            <Route path="/" element={<Login />} />
             <Route path="/Signup" element={<SignUp />} />
             <Route path="/Password Reset" element={<PasswordReset />} />
             <Route path="/Profile" element={<Profile />} />
@@ -23,19 +25,6 @@ function App() {
       </MantineProvider>
     </>
   );
-}
-
-function LoginOrRedirect() {
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    const userData = localStorage.getItem('userData');
-    if (!userData) {
-      navigate('/'); 
-    }
-  }, [navigate]);
-
-  return <Login />;
 }
 
 export default App;
