@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Divider, Paper, ThemeIcon, Image, Drawer, NavLink, rem, Badge, Center, Group, SegmentedControl, Card, Title, BackgroundImage, Alert, PinInput, NumberInput, Modal, Select, Flex, Mark, Grid, Text, TextInput, Button, PasswordInput, Box } from '@mantine/core';
-import { IconLogout2, IconCategory, IconMail, IconDoorEnter, IconBusStop, IconMailExclamation, IconLock, IconCreditCard, IconInfoCircle } from '@tabler/icons-react'
+import { IconLogout2, IconCreditCardOff, IconCategory, IconMail, IconDoorEnter, IconBusStop, IconMailExclamation, IconLock, IconCreditCard, IconInfoCircle } from '@tabler/icons-react'
 import camicard from "/CamiCard.svg"
 import camicardlogo from "/CamiCardLogo.svg"
 import { useDisclosure } from '@mantine/hooks';
@@ -19,8 +19,8 @@ function ProfileSettings() {
 
   const formatDateMY = (dateString) => {
     const date = new Date(dateString);
-    const month = date.getMonth() + 1; 
-    const year = date.getFullYear().toString().slice(-2); 
+    const month = date.getMonth() + 1;
+    const year = date.getFullYear().toString().slice(-2);
 
     return `${month}/${year}`;
   };
@@ -50,31 +50,65 @@ function ProfileSettings() {
           <Grid.Col span={{ base: 12, md: 6, lg: 3 }}>
 
             <Box mb={20} >
-              <Box
-                style={{
-                  backgroundImage: `url(${camicard})`,
-                  backgroundRepeat: 'no-repeat',
-                  backgroundSize: 'cover',
-                  borderRadius: '15px',
-                }} p={30}
-              >
-                <Flex justify="space-between">
-                  <Text fw={400} style={{ letterSpacing: "3px" }} size="md" color='#515151' >{userData.register_number || '_'}</Text>
-                  <Image src={camicardlogo} w={60} ></Image>
-                </Flex>
 
-                <Flex mt="25%" justify="space-between">
-                  <div>
-                    <Text color='#515151' size="xs" >Caming From</Text>
-                    <Text color='#515151' fw={700} size="lg" >{userData.bus_from || '_'}</Text>
-                  </div>
-                  <div>
-                    <Text color='#515151' size="xs" >Valid till</Text>
-                    <Text color='#515151' fw={700} size="lg" >{formatDateMY(userData.pass_expires_on || '_')}</Text>
-                  </div>
-                </Flex>
+              {userData.pass_status === 0 && (
+                <Box
+                  style={{
+                    // backgroundImage: `url(${camicard})`,
+                    backgroundRepeat: 'no-repeat',
+                    backgroundSize: 'cover',
+                    borderRadius: '15px',
+                    height: '210px',
+                    display: 'flex',
+                    border: '1px solid',
+                    borderColor: '#FFBABA',
+                    borderStyle: 'dashed',
+                    justifyContent: "center",
+                    alignItems: "center",
+                    flexDirection: "column"
+                  }} p={30}
+                >
+                  <IconCreditCardOff color='red' size="1.5rem" stroke={1.5}/>
+                  <Box>
 
-              </Box>
+                    <Text ta={"center"} fw={400} size="md" color='red' >
+                      Cami Card Not Activated
+                    </Text>
+                    <Text ta={"center"} fw={400} size="xs" color='#515151' >
+                      contact your bus coordinator to activate
+                    </Text>
+                  </Box>
+
+                </Box>
+              )}
+
+              {userData.pass_status === 1 && (
+                <Box
+                  style={{
+                    backgroundImage: `url(${camicard})`,
+                    backgroundRepeat: 'no-repeat',
+                    backgroundSize: 'cover',
+                    borderRadius: '15px',
+                  }} p={30}
+                >
+                  <Flex justify="space-between">
+                    <Text fw={400} style={{ letterSpacing: "3px" }} size="md" color='#515151' >{userData.register_number || '_'}</Text>
+                    <Image src={camicardlogo} w={60} ></Image>
+                  </Flex>
+
+                  <Flex mt="25%" justify="space-between">
+                    <div>
+                      <Text color='#515151' size="xs" >Caming From</Text>
+                      <Text color='#515151' fw={700} size="lg" >{userData.bus_from || '_'}</Text>
+                    </div>
+                    <div>
+                      <Text color='#515151' size="xs" >Valid till</Text>
+                      <Text color='#515151' fw={700} size="lg" >{formatDateMY(userData.pass_expires_on || '_')}</Text>
+                    </div>
+                  </Flex>
+
+                </Box>)}
+
             </Box>
 
             {/* <Title order={3}>Eva Martinez</Title>
@@ -173,7 +207,7 @@ function ProfileSettings() {
       <Modal size="xs" centered opened={paymentModalOpened} onClose={closePaymentModal} withCloseButton={false} zIndex={2001} >
         <Title order={3}>Paid ₹{userData.amount_paid}</Title>
         <Text fw={500} size="xs" >on {formatDate(userData.paid_on || '_')}</Text>
-        <Text fw={400} size="md" mt={10} c="gray" >Valid till {formatDate(userData.pass_expires_on || '_' )}</Text>
+        <Text fw={400} size="md" mt={10} c="gray" >Valid till {formatDate(userData.pass_expires_on || '_')}</Text>
       </Modal>
 
       {/* Modal for Change Password */}
