@@ -173,7 +173,7 @@ function ProfileSettings() {
       <Modal size="xs" centered opened={paymentModalOpened} onClose={closePaymentModal} withCloseButton={false} zIndex={2001} >
         <Title order={3}>Paid ₹{userData.amount_paid}</Title>
         <Text fw={500} size="xs" >on {formatDate(userData.paid_on || '_')}</Text>
-        <Text fw={400} size="md" mt={10} c="gray" >Valid {formatDate(userData.pass_expires_on || '_' )}</Text>
+        <Text fw={400} size="md" mt={10} c="gray" >Valid till {formatDate(userData.pass_expires_on || '_' )}</Text>
       </Modal>
 
       {/* Modal for Change Password */}
