@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Image, NumberInput, Group, Select, Flex, Mark, Grid, Title, Text, TextInput, Button, PasswordInput, Box } from '@mantine/core';
+import { Image, NumberInput, Group, Select, Flex, Mark, Grid, Title, Text, TextInput, Button, PasswordInput, Box, Notification } from '@mantine/core';
 import logo from "/favCami.svg"
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
@@ -7,6 +7,9 @@ import axios from 'axios';
 function SignUp() {
 
     const baseUrl = import.meta.env.VITE_BASE_URL;
+
+    const [error, setError] = useState(null);
+
 
     const navigate = useNavigate();
 
@@ -38,22 +41,21 @@ function SignUp() {
 
 
     const handleCreateAccClick = () => {
-        // Check if the admission year field is empty or not a number
         if (formData.admission_year === '' || isNaN(formData.admission_year)) {
-            console.error('Admission year must be a valid number');
+            setError('Error creating account');
             return;
         }
-    
+
         axios.post(`${baseUrl}/register`, formData)
             .then(response => {
                 console.log(response.data);
                 navigate('/');
             })
             .catch(error => {
-                console.error('Error registering user:', error);
+                setError('Error creating account');
             });
     };
-    
+
 
 
     const handleSignInClick = () => {
@@ -72,6 +74,14 @@ function SignUp() {
                 style={{ height: '100dvh', width: '100dwh' }}
             >
                 <Box style={{ width: "280px" }}>
+                    
+                    {/* Display Notification if error is not null */}
+                    {error && (
+                        <Notification mt={20} style={{ position: 'absolute', top: '30px', width: '280px' }} color="red" title="Error" onClose={() => setError(null)}>
+                            {error}
+                        </Notification>
+                    )}
+
                     <Image
                         my={10}
                         radius="md"
@@ -80,6 +90,7 @@ function SignUp() {
                         fit="contain"
                         src={logo}
                     />
+
                     <Title order={1}> Sign Up </Title>
                     <TextInput
                         mt={20}
@@ -88,6 +99,7 @@ function SignUp() {
                         onChange={(e) => handleInputChange(e)}
                         name="register_number"
                         value={formData.register_number}
+                        required
                     />
                     <TextInput
                         my={10}
@@ -96,6 +108,7 @@ function SignUp() {
                         onChange={(e) => handleInputChange(e)}
                         name="full_name"
                         value={formData.full_name}
+                        required
                     />
 
                     <Flex gap={'sm'} my={10}>
@@ -105,6 +118,7 @@ function SignUp() {
                             data={['IT', 'CS', 'EC', 'EEE']}
                             onChange={handleChangeDepartment}
                             value={formData.department}
+                            required
                         />
                         <NumberInput
                             label="Admission Year"
@@ -113,6 +127,7 @@ function SignUp() {
                             max={2090}
                             onChange={handleChangeAdmissionYear}
                             value={formData.admission_year}
+                            required
                         />
 
                     </Flex>
@@ -125,6 +140,7 @@ function SignUp() {
                         onChange={(e) => handleInputChange(e)}
                         name="email_id"
                         value={formData.email_id}
+                        required
                     />
 
                     <TextInput
@@ -134,6 +150,7 @@ function SignUp() {
                         onChange={(e) => handleInputChange(e)}
                         name="dob"
                         value={formData.dob}
+                        required
                     />
 
                     <Button mt={20} color='blue' radius="md" size='md' fullWidth onClick={handleCreateAccClick}> Create Account  </Button>
@@ -145,4 +162,4 @@ function SignUp() {
     )
 }
 
-export default SignUp
+export default SignUp;
