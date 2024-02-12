@@ -4,13 +4,16 @@ import { useNavigate } from 'react-router-dom';
 import Axios from 'axios';
 
 function Login() {
+
+    const baseUrl = import.meta.env.VITE_BASE_URL;
+
     const navigate = useNavigate();
     const [registerNumber, setRegisterNumber] = useState('');
     const [dob, setDOB] = useState('');
     const [loginStatus, setLoginStatus] = useState('');
 
     const login = () => {
-        Axios.post("http://localhost:3000/login", {
+        Axios.post(`${baseUrl}/login`, {
             registerNumber: registerNumber,
             dob: dob,
         }).then((response) => {
