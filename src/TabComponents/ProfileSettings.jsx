@@ -68,7 +68,7 @@ function ProfileSettings() {
                     flexDirection: "column"
                   }} p={30}
                 >
-                  <IconCreditCardOff color='red' size="1.5rem" stroke={1.5}/>
+                  <IconCreditCardOff color='red' size="1.5rem" stroke={1.5} />
                   <Box>
 
                     <Text ta={"center"} fw={400} size="md" color='red' >
@@ -123,7 +123,8 @@ function ProfileSettings() {
         <Flex mt={20} pb={80} direction="column" gap={10}>
 
           <Title order={3}>{userData.full_name || '_'}</Title>
-          <Badge color='dark' variant='light' size='lg' leftSection={<IconBusStop size="1rem" stroke={1.5} />}>2</Badge>
+          <Badge color='dark' variant='light' size='lg' leftSection={<IconBusStop size="1rem" stroke={1.5} />}>{userData.bus_number}</Badge>
+
 
           <NavLink
             disabled
@@ -137,16 +138,11 @@ function ProfileSettings() {
             leftSection={<IconDoorEnter size="1rem" stroke={1.5} />}
           />
 
+
           <NavLink
             disabled
             label={userData.email_id || '_'}
             leftSection={<IconMail size="1rem" stroke={1.5} />}
-          />
-
-          <NavLink
-            disabled
-            label={`Bus Number : ${userData.bus_number}`}
-            leftSection={<IconBusStop size="1rem" stroke={1.5} />}
           />
 
 
