@@ -22,6 +22,8 @@ function Busmap() {
     popupAnchor: [0, -32],
   });
 
+  const mapRef = useRef(null); 
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -32,59 +34,69 @@ function Busmap() {
         console.error('Error fetching bus locations:', error);
       }
     };
-
+  
     fetchData();
-
+  
     const intervalId = setInterval(() => {
       fetchData();
     }, 1000);
-
+  
     return () => {
       clearInterval(intervalId);
     };
   }, []);
 
+  
+useEffect(() => {
+  const mapInstance = L.map(mapContainerRef.current).setView([11.8745, 75.3704], 13);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy Cami',
+  }).addTo(mapInstance);
 
-  useEffect(() => {
-    const map = L.map(mapContainerRef.current).setView([11.8745, 75.3704], 13);
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: '&copy Cami',
-    }).addTo(map);
-  
-    // Create markers once
-    const markers = {
-      '1': L.marker([0, 0], { icon: customIcon }).bindPopup('Bus 1'),
-      '2': L.marker([0, 0], { icon: customIcon }).bindPopup('Bus 2'),
-      '3': L.marker([0, 0], { icon: customIcon }).bindPopup('Bus 3'),
-      '4': L.marker([0, 0], { icon: customIcon }).bindPopup('Bus 4'),
-      '5': L.marker([0, 0], { icon: customIcon }).bindPopup('Bus 5'),
-      '6': L.marker([0, 0], { icon: customIcon }).bindPopup('Bus 6'),
-    };
-  
-    setBusMarkers(markers);
-  
-    // Add markers to the map
-    Object.values(markers).forEach(marker => {
-      marker.addTo(map);
+  mapRef.current = mapInstance;
+
+  const markers = {
+    '1': L.marker([0, 0], { icon: customIcon }).bindPopup('Bus 1'),
+    '2': L.marker([0, 0], { icon: customIcon }).bindPopup('Bus 2'),
+    '3': L.marker([0, 0], { icon: customIcon }).bindPopup('Bus 3'),
+    '4': L.marker([0, 0], { icon: customIcon }).bindPopup('Bus 4'),
+    '5': L.marker([0, 0], { icon: customIcon }).bindPopup('Bus 5'),
+    '6': L.marker([0, 0], { icon: customIcon }).bindPopup('Bus 6'),
+  };
+
+  setBusMarkers(markers);
+
+  Object.values(markers).forEach(marker => {
+    marker.addTo(mapInstance);
+  });
+
+  return () => {
+    mapInstance.remove();
+  };
+}, []);
+
+useEffect(() => {
+  if (apiResponse[selectedBus]) {
+    // Hide all markers
+    Object.values(busMarkers).forEach(marker => {
+      marker.removeFrom(mapRef.current); // Use mapRef.current here
     });
-  
-    return () => {
-      map.remove();
-    };
-  }, []);
-  
-  useEffect(() => {
-    if (apiResponse[selectedBus]) {
-      // Update marker position
-      busMarkers[selectedBus].setLatLng([apiResponse[selectedBus].latitude, apiResponse[selectedBus].longitude]);
-      // Open popup if necessary
-      if (selectedBus === selectedBus) {
-        busMarkers[selectedBus].openPopup();
-      } else {
-        busMarkers[selectedBus].closePopup();
-      }
+
+    // Update marker position for the selected bus
+    busMarkers[selectedBus].setLatLng([apiResponse[selectedBus].latitude, apiResponse[selectedBus].longitude]);
+    busMarkers[selectedBus].addTo(mapRef.current); // Use mapRef.current here
+
+    
+    // Open popup if necessary
+    if (selectedBus === selectedBus) {
+      busMarkers[selectedBus].openPopup();
+    } else {
+      busMarkers[selectedBus].closePopup();
     }
-  }, [apiResponse, selectedBus, busMarkers]);
+  }
+}, [apiResponse, selectedBus, busMarkers]);
+
+  
   
 
   const handleBusChange = (value) => {
