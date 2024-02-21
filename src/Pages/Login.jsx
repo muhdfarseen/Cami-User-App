@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Image, Flex, Title, Text, TextInput, Button, Box, Alert, Notification } from '@mantine/core'; // Import Alert component
+import { Image, Flex, Title, Text, TextInput, Button, Box, Alert, Notification } from '@mantine/core';
 import { useNavigate } from 'react-router-dom';
 import logo from "/favCami.svg"
 import Axios from 'axios';
@@ -44,7 +44,7 @@ function Login() {
 
     return (
         <div>
-            <Flex justify="center" align="center" direction="column" wrap="wrap" p={20} style={{ height: '100vh', width: '100vw' }}>
+            <Flex justify="center" align="center" direction="column" wrap="wrap" p={20} style={{ height: '100dvh', width: '100dvw' }}>
                 <Box style={{ width: '280px' }}>
 
                     <Image
