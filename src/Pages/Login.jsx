@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Image, Flex, Title, Text, TextInput, Button, Box, Alert, Notification } from '@mantine/core'; // Import Alert component
 import { useNavigate } from 'react-router-dom';
+import logo from "/favCami.svg"
 import Axios from 'axios';
 
 function Login() {
@@ -45,6 +46,15 @@ function Login() {
         <div>
             <Flex justify="center" align="center" direction="column" wrap="wrap" p={20} style={{ height: '100vh', width: '100vw' }}>
                 <Box style={{ width: '280px' }}>
+
+                    <Image
+                        my={10}
+                        h={50}
+                        w="auto"
+                        fit="contain"
+                        src={logo}
+                    />
+
                     <Box>
 
                         {/* Display Alert if error is not null */}

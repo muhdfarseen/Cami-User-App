@@ -37,7 +37,7 @@ function Busmap() {
 
     const intervalId = setInterval(() => {
       fetchData();
-    }, 3000);
+    }, 1000);
 
     return () => {
       clearInterval(intervalId);
@@ -50,36 +50,42 @@ function Busmap() {
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: '&copy Cami',
     }).addTo(map);
-
+  
+    // Create markers once
     const markers = {
-      '1': apiResponse['1'] && L.marker([apiResponse['1'].latitude, apiResponse['1'].longitude], { icon: customIcon }).bindPopup('Bus 1'),
-      '2': apiResponse['2'] && L.marker([apiResponse['2'].latitude, apiResponse['2'].longitude], { icon: customIcon }).bindPopup('Bus 2'),
-      '3': apiResponse['3'] && L.marker([apiResponse['3'].latitude, apiResponse['3'].longitude], { icon: customIcon }).bindPopup('Bus 3'),
-      '4': apiResponse['4'] && L.marker([apiResponse['4'].latitude, apiResponse['4'].longitude], { icon: customIcon }).bindPopup('Bus 4'),
-      '5': apiResponse['5'] && L.marker([apiResponse['5'].latitude, apiResponse['5'].longitude], { icon: customIcon }).bindPopup('Bus 5'),
-      '6': apiResponse['6'] && L.marker([apiResponse['6'].latitude, apiResponse['6'].longitude], { icon: customIcon }).bindPopup('Bus 6'),
+      '1': L.marker([0, 0], { icon: customIcon }).bindPopup('Bus 1'),
+      '2': L.marker([0, 0], { icon: customIcon }).bindPopup('Bus 2'),
+      '3': L.marker([0, 0], { icon: customIcon }).bindPopup('Bus 3'),
+      '4': L.marker([0, 0], { icon: customIcon }).bindPopup('Bus 4'),
+      '5': L.marker([0, 0], { icon: customIcon }).bindPopup('Bus 5'),
+      '6': L.marker([0, 0], { icon: customIcon }).bindPopup('Bus 6'),
     };
-
+  
     setBusMarkers(markers);
-
-    if (markers[selectedBus]) {
-      markers[selectedBus].addTo(map);
-    }
-
+  
+    // Add markers to the map
+    Object.values(markers).forEach(marker => {
+      marker.addTo(map);
+    });
+  
     return () => {
       map.remove();
     };
-  }, [apiResponse, selectedBus]);
-
+  }, []);
+  
   useEffect(() => {
-    Object.keys(busMarkers).forEach((bus) => {
-      if (bus === selectedBus && busMarkers[bus]) {
-        busMarkers[bus].openPopup();
-      } else if (busMarkers[bus]) {
-        busMarkers[bus].closePopup();
+    if (apiResponse[selectedBus]) {
+      // Update marker position
+      busMarkers[selectedBus].setLatLng([apiResponse[selectedBus].latitude, apiResponse[selectedBus].longitude]);
+      // Open popup if necessary
+      if (selectedBus === selectedBus) {
+        busMarkers[selectedBus].openPopup();
+      } else {
+        busMarkers[selectedBus].closePopup();
       }
-    });
-  }, [selectedBus, busMarkers]);
+    }
+  }, [apiResponse, selectedBus, busMarkers]);
+  
 
   const handleBusChange = (value) => {
     setSelectedBus(value);
